@@ -15,7 +15,7 @@ basePath: "/api"
 paths:
     /emotions/{user_id}:
         get:
-            operationId: emotions.get_sentiment
+            operationRef: '../getTweets/emotions.get_sentiment'
             summary: "Return array of user sentiment analysis"
             parameters:
                 - name: user_id 
