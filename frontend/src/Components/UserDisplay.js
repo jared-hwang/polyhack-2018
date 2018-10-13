@@ -26,7 +26,7 @@ export default class UserDisplay extends Component {
     console.log("WillMount");
 
     //fetch("http://10.245.174.143:5000/api/emotions", {
-      fetch("http://10.0.2.255:5000/getTweets/emotions/realDonaldTrump", {
+      fetch("http://10.0.2.15:5000/getTweets/emotions/hello", {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
