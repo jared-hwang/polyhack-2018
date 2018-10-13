@@ -56,12 +56,25 @@ def get_sentiment(userId, timeScale="2018-10-10"):
     with open('tokenizer.pickle', 'rb') as handle:
         tokenizer = pickle.load(handle)
 
-    print(parsedTweets)
+    #print(parsedTweets)
     classes = ["neutral", "happy", "sad", "hate","anger"]
     model_test = load_model('checkpoint-1.097.h5')
     sequences_test = tokenizer.texts_to_sequences(parsedTweets)
-    print(sequences_test)
+    #print(sequences_test)
     data_int_t = pad_sequences(sequences_test, padding='pre', maxlen=(MAX_SEQUENCE_LENGTH-5))
     data_test = pad_sequences(data_int_t, padding='post', maxlen=(MAX_SEQUENCE_LENGTH))
     y_prob = model_test.predict(data_test)
-    return y_prob
+    
+    ret_list = []
+    for tweet,org, prob in zip(parsedTweets, tweets[userId], y_prob.tolist()):
+        inner = {}
+        inner['id'] = org['id']
+        inner['txt'] = tweet
+        inner['date'] = org['date']
+        inner['happy'] = prob[1]
+        inner['angry'] = prob[4]
+        inner['sad'] = prob[2]
+        ret_list.append(inner)
+
+    return json.dumps(ret_list)
+    

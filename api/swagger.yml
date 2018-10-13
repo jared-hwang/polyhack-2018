@@ -1,6 +1,6 @@
 swagger: "2.0"
 info: 
-    descriptuon: This is the swagger API that goes with our server code
+    description: This is the swagger API that goes with our server code
     version: "1.0.0"
     title: REST API to call python funcs
 consumes:
@@ -15,27 +15,22 @@ basePath: "/api"
 paths:
     /emotions/{user_id}:
         get:
-        operationId: "emotions.get_sentiment"
-        tags:
-            - "Emotions"
-        summary: "A preliminary test function"
-        description: 
-        parameters:
-            - name: user_id
-              in: path
-              type: string
-              description: Twitter User ID
-              required: true
+            operationRef: '../getTweets/emotions.get_sentiment'
+            summary: "Return array of user sentiment analysis"
+            parameters:
+                - name: user_id 
+                  in: path
+                  type: string
+                  description: Twitter User ID
+                  required: true
 
-            - name: time_scale
-              in: query
-              type: string
-              description: 
-              required: true
-
-        responses:
-            200:
-              description: "successful"
-              schema:
-                  items:
-
+                - name: timeScale
+                  in: query
+                  type: string
+                  description: "Begin date for retrieving tweets"
+                  required: false
+            responses:
+                200:
+                  description: "successful"
+                  schema:
+                      type: string
