@@ -110,7 +110,7 @@ export default class UserDisplay extends Component {
     // let sadAvgM = 0;
     // let angryAvgM = 0;
 
-    let tweets = [
+    let tweetsD = [
       "1051132013535797248",
       "1051131894748864512",
       "1051122475134803968",
@@ -120,7 +120,24 @@ export default class UserDisplay extends Component {
       "1051121103928795136",
       "1051120943752507393",
       "1051120667871965189",
-      "1051120070867472389"
+      "1051120070867472389",
+        "1051120806795862019"
+    ];
+
+    let tweetsM = [
+        "1051150313430888448",
+        "1051149643273445378",
+        "1051150207445024768",
+        "1051148946398171137",
+        "1051148433174740992",
+        "1051143872288579584",
+        "1051152343209861121",
+        "1051152030243442690",
+        "1051152644293693440",
+        "1051153385569865728",
+        "1051152974850994177",
+
+
     ];
 
     const MyComponent = resp => {
@@ -182,6 +199,7 @@ export default class UserDisplay extends Component {
                     @RealDonaldTrump{" "}
                   </Label>
                   <Button
+                      color='twitter'
                     onClick={() => {
                       fetch(
                         "http://10.247.140.115:5000/getTweets/emotions/hello",
@@ -203,8 +221,8 @@ export default class UserDisplay extends Component {
                           // let id = "";
                           // id = id.concat(String(resp));
                           // console.log(id);
-                          let index = this.getRandomInt(9);
-                          let id = tweets[index];
+                          let index = this.getRandomInt(tweetsD.length);
+                          let id = tweetsD[index];
                           // let id = "1051122475134804000";
                           // let id = "1051117589227851777";
                           this.setState({ id: id, tweeted: true });
@@ -233,7 +251,7 @@ export default class UserDisplay extends Component {
                 <Progress
                   percent={happyAvgD}
                   progress
-                  precision={1}
+                  precision={happyAvgD < 10 ? 0 : 1}
                   color="green"
                 />
               </Button>
@@ -251,7 +269,7 @@ export default class UserDisplay extends Component {
                 <Progress
                   percent={sadAvgD}
                   progress
-                  precision={1}
+                  precision={sadAvgD < 10 ? 0 : 1}
                   color="blue"
                 />
               </Button>
@@ -269,7 +287,7 @@ export default class UserDisplay extends Component {
                 <Progress
                   percent={angryAvgD}
                   progress
-                  precision={1}
+                  precision={angryAvgD < 10 ? 0 : 1}
                   color="red"
                 />
               </Button>
@@ -311,7 +329,9 @@ export default class UserDisplay extends Component {
                     @0xmchow{" "}
                   </Label>
                   <Button
-                    onClick={() => {
+                      color='twitter'
+
+                      onClick={() => {
                       fetch(
                         "http://10.247.140.115:5000/getTweets/emotions/hello",
                         {
@@ -330,8 +350,12 @@ export default class UserDisplay extends Component {
                           let resp = JSON.parse(response);
                           console.log(resp);
                           // let id = "1051122475134804000";
-                          let id = "1051117589227851777";
+                          // let id = "1051117589227851777";
+                            let index = this.getRandomInt(tweetsM.length);
+                            let id = tweetsM[index];
                           this.setState({ id: id, tweeted: true });
+                            this.rerender();
+
                         })
                         .catch(err => {
                           // console.log("err" + err);
@@ -355,7 +379,7 @@ export default class UserDisplay extends Component {
                 <Progress
                   percent={happyAvgM}
                   progress
-                  precision={1}
+                  precision={happyAvgM < 10 ? 0 : 1}
                   color="green"
                 />
               </Button>
@@ -373,7 +397,7 @@ export default class UserDisplay extends Component {
                 <Progress
                   percent={sadAvgM}
                   progress
-                  precision={1}
+                  precision={sadAvgM < 10 ? 0 : 1}
                   color="blue"
                 />
               </Button>
@@ -391,7 +415,7 @@ export default class UserDisplay extends Component {
                 <Progress
                   percent={angryAvgM}
                   progress
-                  precision={1}
+                  precision={angryAvgM < 10 ? 0 : 1}
                   color="red"
                 />
               </Button>
