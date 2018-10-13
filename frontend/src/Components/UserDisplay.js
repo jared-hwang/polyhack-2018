@@ -12,15 +12,17 @@ export default class UserDisplay extends Component {
   componentWillMount() {
     console.log("WillMount");
 
-    fetch("http://10.245.174.143:5000/api/emotions", {
+    fetch("http://localhost:5000/api/emotions", {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
       }
     })
-      .then(resp => {
-        console.log(resp);
-        this.setState({ resp: resp });
+      .then(function(resp) {
+        return resp.json();
+      })
+      .then(response => {
+        console.log(response);
       })
       .catch(err => {
         console.log("err" + err);

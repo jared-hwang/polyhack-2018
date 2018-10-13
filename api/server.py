@@ -1,4 +1,5 @@
 from flask import render_template
+from flask_cors import CORS
 import connexion
 
 # create application instance, using connexion wrapper
@@ -6,6 +7,9 @@ app = connexion.App(__name__, specification_dir='./')
 
 # config file
 app.add_api('swagger2.yml')
+
+CORS(app.app)
+
 
 # Create the application instance
 @app.route('/')
