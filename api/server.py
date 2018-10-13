@@ -6,7 +6,7 @@ import connexion
 app = connexion.App(__name__, specification_dir='./')
 
 # config file
-app.add_api('swagger2.yml')
+app.add_api('swagger.yml')
 
 CORS(app.app)
 
