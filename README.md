@@ -3,12 +3,12 @@
 ## Set up for Flask:
 
 ### Dependencies
-python3
-virtualenv
-Flask
-Connexion
+- python3
+- virtualenv
+- Flask
+- Connexion
 
-### Commands to run
+### Commands to set up
 ```
 sudo apt-get install python-virtualenv
 python3 -m venv venv
