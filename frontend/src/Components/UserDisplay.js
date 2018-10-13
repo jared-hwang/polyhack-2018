@@ -25,7 +25,8 @@ export default class UserDisplay extends Component {
   componentWillMount() {
     console.log("WillMount");
 
-    fetch("http://10.245.174.143:5000/api/emotions", {
+    //fetch("http://10.245.174.143:5000/api/emotions", {
+      fetch("http://10.0.2.255:5000/getTweets/emotions/realDonaldTrump", {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
@@ -65,21 +66,28 @@ export default class UserDisplay extends Component {
               this.setState({ happy: !this.state.happy, anger: false, sad: false });
             }}
           >
-            <Progress percent={11} color="green" />
+              <Label>Happiness</Label>
+              <Progress percent={11} color="green" />
+
           </Button>
           <Button
             onClick={() => {
               this.setState({ sad: !this.state.sad, anger: false, happy: false });
             }}
           >
-            <Progress percent={33} color="blue" />
+              <Label>Sad</Label>
+
+              <Progress percent={33} color="blue" />
+
           </Button>
           <Button
             onClick={() => {
               this.setState({ anger: !this.state.anger, sad: false, happy: false });
             }}
           >
-            <Progress percent={45} color="red" />
+              <Label>Anger</Label>
+
+              <Progress percent={45} color="red" />
           </Button>
           {this.state.happy === true ? <SentimentGraph /> : ""}
           {this.state.sad === true ? <SentimentGraph /> : ""}
