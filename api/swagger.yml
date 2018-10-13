@@ -1,4 +1,4 @@
-swagger: "3.0"
+swagger: "2.0"
 info: 
     description: This is the swagger API that goes with our server code
     version: "1.0.0"
@@ -15,44 +15,22 @@ basePath: "/api"
 paths:
     /emotions/{user_id}:
         get:
-        operationId: 'emotions.get_sentiment'
-        summary: "Return array of user sentiment analysis"
-        parameters:
-            - name: user_id 
-              in: path
-              type: string
-              description: Twitter User ID
-              required: true
+            operationId: emotions.get_sentiment
+            summary: "Return array of user sentiment analysis"
+            parameters:
+                - name: user_id 
+                  in: path
+                  type: string
+                  description: Twitter User ID
+                  required: true
 
-            - name: time_scale
-              in: query
-              type: string
-              description: "Begin date for retrieving tweets"
-              required: false
-
-        responses:
-            200:
-              description: "successful"
-              schema:
-                  type: array
-                  items:
-                      $ref: '#/components/schemas/User'
-                          
-
-components:
-    schemas:
-        User:
-          type: object
-          properties:
-            id:
-              type: integer
-            txt:
-              type: string
-            date:
-              type: string
-            happy:
-              type: float
-            angry:
-              type: float
-            sad:
-              type: float
+                - name: timeScale
+                  in: query
+                  type: string
+                  description: "Begin date for retrieving tweets"
+                  required: false
+            responses:
+                200:
+                  description: "successful"
+                  schema:
+                      type: string
