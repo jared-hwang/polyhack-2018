@@ -1,18 +1,31 @@
 import React, { Component } from "react";
-import { Header } from "semantic-ui-react";
+import {
+  Header,
+  Segment,
+  Image,
+  Label,
+  Card,
+  Progress,
+  Container,
+  Button
+} from "semantic-ui-react";
+import SentimentGraph from "./SentimentGraph";
 
 export default class UserDisplay extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      resp: "hello"
+      resp: "hello",
+      happy: false,
+      sad: false,
+      anger: false
     };
   }
 
   componentWillMount() {
     console.log("WillMount");
 
-    fetch("http://localhost:5000/api/emotions", {
+    fetch("http://10.245.174.143:5000/api/emotions", {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
@@ -31,12 +44,48 @@ export default class UserDisplay extends Component {
 
   render() {
     return (
-      <div>
-        <p>
-          {this.state.resp}
-          Hello
-        </p>
-      </div>
+      <Container textAlign="center" style={{ width: "50%" }}>
+        <Card centered fluid>
+          {/*<Label size='medium' color='blue' horizontal image>*/}
+          {/*<Image size='medium' src={require("../resources/realDT.jpg")} inline />*/}
+          {/*@RealDonaldTrump*/}
+          {/*</Label>*/}
+          <Label size="large" color="blue" horizontal>
+            @RealDonaldTrump{" "}
+          </Label>
+
+          <Image
+            floated="left"
+            size="tiny"
+            src={require("../resources/realDT.jpg")}
+            inline
+          />
+          <Button
+            onClick={() => {
+              this.setState({ happy: !this.state.happy, anger: false, sad: false });
+            }}
+          >
+            <Progress percent={11} color="green" />
+          </Button>
+          <Button
+            onClick={() => {
+              this.setState({ sad: !this.state.sad, anger: false, happy: false });
+            }}
+          >
+            <Progress percent={33} color="blue" />
+          </Button>
+          <Button
+            onClick={() => {
+              this.setState({ anger: !this.state.anger, sad: false, happy: false });
+            }}
+          >
+            <Progress percent={45} color="red" />
+          </Button>
+          {this.state.happy === true ? <SentimentGraph /> : ""}
+          {this.state.sad === true ? <SentimentGraph /> : ""}
+          {this.state.anger === true ? <SentimentGraph /> : ""}
+        </Card>
+      </Container>
     );
   }
 }
