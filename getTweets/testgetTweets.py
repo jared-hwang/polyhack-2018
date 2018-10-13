@@ -1,4 +1,4 @@
-from getTweets import * 
+from tweetScraper import * 
 from datetime import date
 from datetime import time
 from datetime import datetime
