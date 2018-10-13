@@ -1,0 +1,27 @@
+swagger: "2.0"
+info: 
+    description: This is the swagger API that goes with our server code
+    version: "1.0.0"
+    title: REST API to call python funcs
+consumes:
+    - "application/json"
+produces:
+    - "application/json"
+
+basePath: "/api"
+
+
+# paths supported by the server application
+paths:
+    /emotions:
+        get:
+          operationId: "emotions.hello"
+          tags:
+              - "Emotions"
+          summary: "A preliminary test function"
+          description: "Sends a not-so-secret message"
+          responses:
+              200:
+                description: "successful"
+                schema:
+                    type: string
