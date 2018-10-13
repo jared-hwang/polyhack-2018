@@ -30,9 +30,15 @@ VALIDATION_SPLIT = 0.2
 EMBEDDING_DIM = 200 # embedding dimensions for word vectors (word2vec/GloVe)
 
 
+def hello():
+    return "hello dylan"
 
-def get_sentiment(userId, timeScale="2018-10-10"):
+def get_sentiment(**kwargs):
 
+    # userId='realDonaldTrump', timeScale="2018-10-10"
+
+    userId = kwargs['user_id']
+    timeScale="2018-10-10"
     today = date.today().strftime("%Y-%m-%d")
 
     command = "./tweetScraper.py " + timeScale + " " + today + " " + userId
