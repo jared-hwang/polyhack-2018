@@ -1,0 +1,41 @@
+swagger: "2.0"
+info: 
+    descriptuon: This is the swagger API that goes with our server code
+    version: "1.0.0"
+    title: REST API to call python funcs
+consumes:
+    - "application/json"
+produces:
+    - "application/json"
+
+basePath: "/api"
+
+
+# paths supported by the server application
+paths:
+    /emotions/{user_id}:
+        get:
+        operationId: "emotions.get_sentiment"
+        tags:
+            - "Emotions"
+        summary: "A preliminary test function"
+        description: 
+        parameters:
+            - name: user_id
+              in: path
+              type: string
+              description: Twitter User ID
+              required: true
+
+            - name: time_scale
+              in: query
+              type: string
+              description: 
+              required: true
+
+        responses:
+            200:
+              description: "successful"
+              schema:
+                  items:
+
