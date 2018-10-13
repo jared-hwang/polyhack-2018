@@ -10,7 +10,7 @@ class App extends Component {
         <div style={{ backgroundColor: '#282c34' }} className={'App'}>
             <Segment inverted>
 
-            <Header><Image size='tiny' src={require("../logo.png")}/>Trump Happiness Analysis</Header>
+            <Header as='h1'><Image size='tiny' src={require("../logo.png")}/>{" "}Tweetalyzer{" "}<Image size='tiny' src={require("../resources/twitter.png")}/></Header>
             </Segment>
             <UserDisplay/>
         </div>
