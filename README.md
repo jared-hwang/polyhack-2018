@@ -1,14 +1,14 @@
-#Polyhack 2018 project
+# Polyhack 2018 project
 
-##Set up for Flask:
+## Set up for Flask:
 
-###Dependencies
+### Dependencies
 python3
 virtualenv
 Flask
 Connexion
 
-###Commands to run
+### Commands to run
 ```
 sudo apt-get install python-virtualenv
 python3 -m venv venv
